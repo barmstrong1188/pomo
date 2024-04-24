@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pomodoro Timer Settings</title>
+</head>
+<body>
+<h1>Pomodoro Timer Settings</h1>
+<label for="workDuration">Work Duration (minutes):</label>
+<input type="number" id="workDuration" name="workDuration" value="25">
+<button onclick="updateWorkDuration()">Set Work Duration</button>
+
+<label for="breakDuration">Break Duration (minutes):</label>
+<input type="number" id="breakDuration" name="breakDuration" value="5">
+<button onclick="updateBreakDuration()">Set Break Duration</button>
+
+<script>
+function updateWorkDuration() {
+    const minutes = document.getElementById('workDuration').value;
+    fetch(`/timer/updateWorkDuration?minutes=${minutes}`, { method: 'POST' });
+}
+
+function updateBreakDuration() {
+    const minutes = document.getElementById('breakDuration').value;
+    fetch(`/timer/updateBreakDuration?minutes=${minutes}`, { method: 'POST' });
+}
+</script>
+</body>
+</html>
