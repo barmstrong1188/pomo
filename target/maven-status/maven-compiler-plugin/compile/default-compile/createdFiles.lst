@@ -1,2 +1,6 @@
-com\pomodoro\pomo\PomodoroTimer.class
+com\pomodoro\pomo\controller\TimerController.class
+com\pomodoro\pomo\model\DurationSettings.class
 com\pomodoro\pomo\PomoApplication.class
+com\pomodoro\pomo\service\TimerService.class
+com\pomodoro\pomo\PomodoroTimer.class
+com\pomodoro\pomo\repository\DurationSettingsRepository.class
