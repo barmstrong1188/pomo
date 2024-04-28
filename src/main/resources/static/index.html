@@ -40,7 +40,29 @@
 <audio id="workEndSound" src="./sounds/celebration.wav" preload="auto"></audio>
 <audio id="breakEndSound" src="./sounds/bubbles.wav" preload="auto"></audio>
 
-
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDmhHHoj_xGKvRgqtRQaevm_pIWD9WKeGE",
+      authDomain: "pomo-eb9cb.firebaseapp.com",
+      projectId: "pomo-eb9cb",
+      storageBucket: "pomo-eb9cb.appspot.com",
+      messagingSenderId: "995511355628",
+      appId: "1:995511355628:web:33825e2e47dfb94f3d7dc9",
+      measurementId: "G-LHLQGKVTV4"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 <script src="./js/app.js"></script>
 </body>
 </html>

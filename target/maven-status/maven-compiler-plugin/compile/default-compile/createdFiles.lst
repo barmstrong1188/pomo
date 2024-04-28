@@ -1,6 +1,12 @@
+com\pomodoro\pomo\controller\LoginController.class
+com\pomodoro\pomo\repository\UserRepository.class
 com\pomodoro\pomo\controller\TimerController.class
+com\pomodoro\pomo\controller\CustomErrorController.class
 com\pomodoro\pomo\model\DurationSettings.class
 com\pomodoro\pomo\PomoApplication.class
 com\pomodoro\pomo\service\TimerService.class
+com\pomodoro\pomo\config\SecurityConfig$CustomAuthorizationRequestResolver.class
+com\pomodoro\pomo\model\User.class
 com\pomodoro\pomo\PomodoroTimer.class
 com\pomodoro\pomo\repository\DurationSettingsRepository.class
+com\pomodoro\pomo\config\SecurityConfig.class

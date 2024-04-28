@@ -4,6 +4,8 @@ let isWorkTime = true;
 let workTime = parseInt(document.getElementById('workDuration').value) * 60;
 let breakTime = parseInt(document.getElementById('breakDuration').value) * 60;
 
+
+
 function updateWorkDuration() {
     const minutes = document.getElementById('workDuration').value;
     console.log("Updating work duration to:", minutes);
