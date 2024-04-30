@@ -1,9 +1,8 @@
 let timer;
 let isPaused = false;
 let isWorkTime = true;
-let workTime = parseInt(document.getElementById('workDuration').value) * 60;
-let breakTime = parseInt(document.getElementById('breakDuration').value) * 60;
-
+let workTime;
+let breakTime;
 
 
 function updateWorkDuration() {
@@ -147,40 +146,72 @@ function togglePause() {
     document.getElementById('pauseButton').textContent = isPaused ? 'Resume' : 'Pause';
 }
 
-function resetTimer() {
-    clearInterval(timer);
-    if (isWorkTime) {
-        workTime = parseInt(document.getElementById('workDuration').value) * 60;
-        updateTimerDisplay(workTime, 'Work');
-    } else {
-        breakTime = parseInt(document.getElementById('breakDuration').value) * 60;
-        updateTimerDisplay(breakTime, 'Break');
-    }
-    startTimer();
-}
+// function resetTimer() {
+//     clearInterval(timer);
+//     if (isWorkTime) {
+//         workTime = parseInt(document.getElementById('workDuration').value) * 60;
+//         updateTimerDisplay(workTime, 'Work');
+//     } else {
+//         breakTime = parseInt(document.getElementById('breakDuration').value) * 60;
+//         updateTimerDisplay(breakTime, 'Break');
+//     }
+//     startTimer();
+// }
 
-// Modal interactions
-document.getElementById('settingsButton').onclick = function() {
-    document.getElementById("settingsModal").style.display = "block";
-}
-document.getElementsByClassName('close')[0].onclick = function() {
-    document.getElementById("settingsModal").style.display = "none";
-}
-window.onclick = function(event) {
-    if (event.target == document.getElementById("settingsModal")) {
+// // Modal interactions
+// document.getElementById('settingsButton').onclick = function() {
+//     document.getElementById("settingsModal").style.display = "block";
+// }
+// document.getElementsByClassName('close')[0].onclick = function() {
+//     document.getElementById("settingsModal").style.display = "none";
+// }
+// window.onclick = function(event) {
+//     if (event.target == document.getElementById("settingsModal")) {
+//         document.getElementById("settingsModal").style.display = "none";
+//     }
+// }
+
+// document.getElementById('saveSettings').addEventListener('click', function() {
+//     const workMinutes = document.getElementById('workDuration').value;
+//     const breakMinutes = document.getElementById('breakDuration').value;
+//     workTime = parseInt(workMinutes) * 60;
+//     breakTime = parseInt(breakMinutes) * 60;
+//     fetch(`/timer/updateWorkDuration?minutes=${workMinutes}`, { method: 'POST' })
+//     .then(response => response.ok ? console.log("Work duration updated successfully.") : console.error('Failed to update work duration'));
+//     fetch(`/timer/updateBreakDuration?minutes=${breakMinutes}`, { method: 'POST' })
+//     .then(response => response.ok ? console.log("Break duration updated successfully.") : console.error('Failed to update break duration'));
+//     document.getElementById("settingsModal").style.display = "none";
+//     loadPreset(workMinutes, breakMinutes);
+// });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Ensures the DOM is fully loaded before accessing elements
+    workTime = parseInt(document.getElementById('workDuration').value) * 60;
+    breakTime = parseInt(document.getElementById('breakDuration').value) * 60;
+
+    // Set up other event listeners or initialization code here
+    document.getElementById('settingsButton').onclick = function() {
+        document.getElementById("settingsModal").style.display = "block";
+    };
+    document.getElementsByClassName('close')[0].onclick = function() {
         document.getElementById("settingsModal").style.display = "none";
-    }
-}
+    };
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("settingsModal")) {
+            document.getElementById("settingsModal").style.display = "none";
+        }
+    };
 
-document.getElementById('saveSettings').addEventListener('click', function() {
-    const workMinutes = document.getElementById('workDuration').value;
-    const breakMinutes = document.getElementById('breakDuration').value;
-    workTime = parseInt(workMinutes) * 60;
-    breakTime = parseInt(breakMinutes) * 60;
-    fetch(`/timer/updateWorkDuration?minutes=${workMinutes}`, { method: 'POST' })
-    .then(response => response.ok ? console.log("Work duration updated successfully.") : console.error('Failed to update work duration'));
-    fetch(`/timer/updateBreakDuration?minutes=${breakMinutes}`, { method: 'POST' })
-    .then(response => response.ok ? console.log("Break duration updated successfully.") : console.error('Failed to update break duration'));
-    document.getElementById("settingsModal").style.display = "none";
-    loadPreset(workMinutes, breakMinutes);
+    document.getElementById('saveSettings').addEventListener('click', function() {
+        const workMinutes = document.getElementById('workDuration').value;
+        const breakMinutes = document.getElementById('breakDuration').value;
+        workTime = parseInt(workMinutes) * 60;
+        breakTime = parseInt(breakMinutes) * 60;
+        fetch(`/timer/updateWorkDuration?minutes=${workMinutes}`, { method: 'POST' })
+        .then(response => response.ok ? console.log("Work duration updated successfully.") : console.error('Failed to update work duration'));
+        fetch(`/timer/updateBreakDuration?minutes=${breakMinutes}`, { method: 'POST' })
+        .then(response => response.ok ? console.log("Break duration updated successfully.") : console.error('Failed to update break duration'));
+        document.getElementById("settingsModal").style.display = "none";
+        loadPreset(workMinutes, breakMinutes);
+    });
 });

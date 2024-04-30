@@ -25,10 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests()
-                .antMatchers("/", "/login.html", "/logout").permitAll()
-                .anyRequest().authenticated()
-            .and()
+        .authorizeRequests()
+        .antMatchers("/static/**", "/css/**", "/js/**", "/logos/**").permitAll() // Ensure this matches your static resources' paths
+        .antMatchers("/", "/login.html", "/logout").permitAll()
+        .anyRequest().authenticated()
+        .and()
             .oauth2Login()
                 .defaultSuccessUrl("/", true)
                 .authorizationEndpoint()
